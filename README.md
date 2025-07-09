@@ -6,14 +6,15 @@ Analizar y comparar los precios de medicamentos comunes entre distintas farmacia
 
 ## 📌 Fuentes de datos
 
-1. **Inkafarma** – Web scraping directo de la tienda.
-2. **Mifarma** – Web scraping de productos.
+1. **Bienestar y Salud** – Web scraping de productos.
+2. **Hogar y Salud** – Web scraping de productos.
 3. **OpenFDA API** – Información complementaria de medicamentos.
 4. **CSV** – Datos del MINSA sobre consumo y disponibilidad de medicamentos.
 
 ## 🛠️ Herramientas
 
 - Python
+-Selenium
 - BeautifulSoup, Requests
 - Pandas, Matplotlib, Seaborn
 - Jupyter Notebook
