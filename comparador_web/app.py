@@ -45,10 +45,10 @@ def buscar_medicamentos():
         }), 500
     
     try:
-        # Buscar medicamentos que contengan el nombre (sin distinguir mayúsculas/minúsculas)
-        # Asumiendo que la columna se llama 'nombre' - ajusta según tu CSV
+        # Buscar medicamentos que contengan el nombre en las columnas Productos o PrincipioActivo
         resultados = medicamentos_df[
-            medicamentos_df['nombre'].str.contains(nombre, case=False, na=False)
+            (medicamentos_df['Productos'].str.contains(nombre, case=False, na=False)) |
+            (medicamentos_df['PrincipioActivo'].str.contains(nombre, case=False, na=False))
         ]
         
         # Convertir a diccionario para JSON
@@ -60,9 +60,9 @@ def buscar_medicamentos():
             'resultados': medicamentos_encontrados
         })
         
-    except KeyError:
+    except KeyError as e:
         return jsonify({
-            'error': 'La columna "nombre" no existe en el CSV. Verifica la estructura del archivo.',
+            'error': f'Columna no encontrada: {str(e)}. Verifica que tu CSV tenga las columnas: Productos, PrincipioActivo, precio, farmacias',
             'resultados': []
         }), 500
     except Exception as e:
