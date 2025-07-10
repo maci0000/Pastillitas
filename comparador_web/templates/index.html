@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparador de Medicinas</title>
+    <script src="{{ url_for('static', filename='buscador.js') }}" defer></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input { padding: 8px; width: 300px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Comparador de Precios de Medicinas</h1>
+    <input type="text" id="busqueda" placeholder="Busca por nombre o principio activo">
+    <button onclick="buscar()">Buscar</button>
+
+    <table id="resultados" style="display:none;">
+        <thead>
+            <tr>
+                <th>Nombre Comercial</th>
+                <th>Principio Activo</th>
+                <th>Precio (S/)</th>
+                <th>Farmacia</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <p id="mensaje"></p>
+</body>
+</html>

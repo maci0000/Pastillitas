@@ -13,18 +13,18 @@ function buscar() {
             const tbody = tabla.querySelector('tbody');
             tbody.innerHTML = '';
 
-            if (data.length === 0) {
+            if (!data || data.length === 0 || data.error) {
                 tabla.style.display = 'none';
-                document.getElementById("mensaje").innerText = `No se encontraron resultados para "${query}"`;
+                document.getElementById("mensaje").innerText = `No se encontraron resultados para "${query}".`;
             } else {
                 tabla.style.display = 'table';
                 document.getElementById("mensaje").innerText = '';
                 data.forEach(row => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
-                        <td>${row.nombre_comercial}</td>
-                        <td>${row.principio_activo}</td>
-                        <td>S/ ${row.precio}</td>
+                        <td>${row.Producto}</td>
+                        <td>${row.PrincipioActivo}</td>
+                        <td>${row.precio}</td>
                         <td>${row.farmacia}</td>
                     `;
                     tbody.appendChild(tr);
@@ -32,7 +32,7 @@ function buscar() {
             }
         })
         .catch(error => {
-            console.error("Error en la búsqueda:", error);
-            document.getElementById("mensaje").innerText = "Error al buscar. Revisa tu servidor.";
+            console.error("Error:", error);
+            document.getElementById("mensaje").innerText = "Error al conectar con el servidor.";
         });
 }
