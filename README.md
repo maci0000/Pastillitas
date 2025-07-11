@@ -9,12 +9,11 @@ Analizar y comparar los precios de medicamentos comunes entre distintas farmacia
 1. **Bienestar y Salud** – Web scraping de productos.
 2. **Hogar y Salud** – Web scraping de productos.
 3. **OpenFDA API** – Información complementaria de medicamentos.
-4. **CSV** – Datos del MINSA sobre consumo y disponibilidad de medicamentos.
 
 ## 🛠️ Herramientas
 
 - Python
--Selenium
+- Selenium
 - BeautifulSoup, Requests
 - Pandas, Matplotlib, Seaborn
 - Jupyter Notebook
@@ -27,7 +26,6 @@ Ver estructura de carpetas en este repositorio.
 ## 👥 Integrantes
 
 - Sean Huancani – @Sean-cristobal30
-- Luis Arce – @andresarce13
 - Valeska Rodriguez – @maci0000
 
 
