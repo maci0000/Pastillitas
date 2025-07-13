@@ -14,7 +14,7 @@ import time
 geckodriver_path = r"C:\geckodriver-v0.36.0-win64\geckodriver.exe"
 firefox_binary_path = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 
-output_path = "comparador_web/data/hogar_salud.csv"
+output_path = "raw_data/hogar_salud.csv"
 os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
 options = FirefoxOptions()

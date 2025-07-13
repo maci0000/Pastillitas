@@ -2,9 +2,9 @@ import pandas as pd
 import os
 
 # Rutas
-path_boticas = "comparador_web/data/boticas_salud.csv"
-path_hogar = "comparador_web/data/hogar_salud.csv"
-output_path = "comparador_web/data/medicamentos.csv"
+path_boticas = "raw_data/boticas_salud.csv"
+path_hogar = "raw_data/hogar_salud.csv"
+output_path = "data/medicamentos_unificados.csv"
 
 # Cargar los archivos
 df_boticas = pd.read_csv(path_boticas)
