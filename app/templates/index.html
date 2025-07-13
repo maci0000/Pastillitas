@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>FarmaCompare | Comparador de Precios</title>
+    <!-- Ya no necesitamos enlazar a buscador.js -->
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; background-color: #f8f9fa; }
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        h1 { color: #333; text-align: center; }
+        form { display: flex; gap: 10px; margin-bottom: 20px; }
+        input[type="text"] { flex-grow: 1; padding: 12px; font-size: 16px; border: 1px solid #ddd; border-radius: 4px; }
+        button { padding: 12px 20px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #e0e0e0; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: 600; }
+        .mensaje { text-align: center; color: #666; font-size: 1.1em; padding: 20px; }
+        .fda-info { margin-top: 30px; border-top: 2px solid #007bff; padding-top: 20px; }
+        .fda-info h2 { color: #0056b3; }
+        .fda-info h3 { border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 20px; }
+        .fda-info p { line-height: 1.6; color: #444; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Comparador de Precios de Medicinas</h1>
+        
+        <!-- Este formulario enviará los datos a la misma página (/) usando el método GET -->
+        <form action="/" method="GET">
+            <input type="text" name="query" placeholder="Busca por nombre o principio activo..." value="{{ query }}">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <!-- Lógica para mostrar la tabla de precios -->
+        {% if medicamentos %}
+            <h2>Precios Encontrados</h2>
+            <table id="tabla-precios">
+                <thead>
+                    <tr>
+                        <th>Nombre Comercial</th>
+                        <th>Principio Activo</th>
+                        <th>Precio (S/)</th>
+                        <th>Farmacia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Iteramos sobre la lista 'medicamentos' que nos pasó Flask -->
+                    {% for med in medicamentos %}
+                    <tr>
+                        <td>{{ med.Productos }}</td>
+                        <td>{{ med.PrincipioActivo }}</td>
+                        <td>S/ {{ "%.2f"|format(med.Precio|float) }}</td>
+                        <td>{{ med.Farmacias }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% elif query %}
+            <!-- Mensaje si se buscó algo pero no se encontró -->
+            <p class="mensaje">No se encontraron precios para "{{ query }}".</p>
+        {% endif %}
+
+        <!-- Lógica para mostrar la información de la FDA -->
+        {% if info_fda.brand_name %}
+            <div class="fda-info">
+                <h2>Información de la FDA para: {{ info_fda.brand_name }}</h2>
+                <p><strong>Nombre Genérico:</strong> {{ info_fda.generic_name }}</p>
+                <h3>Descripción</h3>
+                <p>{{ info_fda.description }}</p>
+                <h3>Indicaciones y Uso</h3>
+                <p>{{ info_fda.indications_and_usage }}</p>
+                <h3>Advertencias</h3>
+                <p>{{ info_fda.warnings }}</p>
+            </div>
+        {% elif info_fda.message or info_fda.error %}
+             <div class="fda-info">
+                <p>{{ info_fda.message or info_fda.error }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

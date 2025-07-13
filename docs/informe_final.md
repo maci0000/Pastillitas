@@ -42,25 +42,21 @@ while True:
 ---
 
 ### 2.1. Scraper para 'Hogar y Salud'
-*   **Tecnología:** Selenium con el driver `chromedriver` para controlar Google Chrome.
+*   **Tecnología:** Selenium + Firefox (geckodriver)
 *   **Estrategia de Extracción:**
     1.  Se identifico una estructura de paginacion, luego se implemento un bucle que imcrementa el numero de pagina hasta no encontrar mas productos.
     2.  En cada pagina de listado, se extraen los enlaces individuales de cada producto.
     3.  El script visita cada enlace de producto en una nueva pestaña  para acceder a la pagina de detalle.
+    4.  Extrae nombre, precio y principio activo (de la pestaña “Composición”).
 *   **Fragmento de Código Clave (Paginacion y visita a detalle):**
 ```python
 # Bucle para iterar a través de las páginas del catálogo
 while True:
     driver.get(base_url.format(page))
-    enlaces_productos = driver.find_elements(By.CSS_SELECTOR, "h3.wd-entities-title a")
-    if not enlaces_productos:
-        break # Fin del scraping si no hay más productos
-    
-    urls_a_visitar = [enlace.get_attribute("href") for enlace in enlaces_productos]
-    
-    for url_producto in urls_a_visitar:
-        # Lógica para abrir en nueva pestaña, extraer datos y cerrar...
-    
+    enlaces = driver.find_elements(By.CSS_SELECTOR, "h3.wd-entities-title a")
+    if not enlaces:
+        break
+    # abrir cada enlace, extraer y cerrar
     page += 1
 ```
 ---
