@@ -2,7 +2,7 @@
 
 ## 🧠 Objetivo
 
-Analizar y comparar los precios de medicamentos comunes entre distintas farmacias online en Perú, así como datos complementarios desde fuentes oficiales para evaluar accesibilidad y disponibilidad.
+Analizar y comparar los precios de medicamentos entre dos farmacias online en Perú para evaluar accesibilidad y disponibilidad, así como la descripción, indicaciÓn y uso de los medicamentos desde fuentes oficiales como la API de la FDA.
 
 ## 📌 Fuentes de datos
 
@@ -32,5 +32,5 @@ Ver estructura de carpetas en este repositorio.
 ## 📈 Producto final
 
 - Base de datos en `.csv` con precios por medicamento y farmacia.
-- Visualizaciones sobre diferencias de precio y accesibilidad.
-- Informe detallado en `docs/informe_final.md`.
+ Extracción de datos desde la API.
+- Visualizaciones sobre diferencias de precio y accesibilidad desde la página web.
