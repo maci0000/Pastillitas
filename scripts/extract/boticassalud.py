@@ -55,7 +55,7 @@ while True:
             precio_txt = precio_txt.replace("S/", "").replace(",", ".").strip()
             if not precio_txt.replace(".", "", 1).isdigit():
                 continue
-            precio = float(precio_txt)
+            Precio = float(precio_txt)
         except:
             continue  # sin precio → no guardar
 
@@ -100,12 +100,12 @@ while True:
 
             productos.append({
                 "Producto": nombre,
-                "precio": precio,
+                "Precio": Precio,
                 "PrincipioActivo": principio,
-                "farmacia": "Boticas y Salud"
+                "Farmacia": "Boticas y Salud"
             })
 
-            print(f"✅ {len(productos)}. {nombre} | S/{precio} | {principio}")
+            print(f"✅ {len(productos)}. {nombre} | S/{Precio} | {principio}")
 
             driver.close()
             driver.switch_to.window(driver.window_handles[0])
