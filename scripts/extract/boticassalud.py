@@ -99,10 +99,10 @@ while True:
                 print(f"⚠️ No se encontró principio activo: {e}")
 
             productos.append({
-                "Producto": nombre,
+                "Productos": nombre,
                 "Precio": Precio,
                 "PrincipioActivo": principio,
-                "Farmacia": "Boticas y Salud"
+                "Farmacias": "Boticas y Salud"
             })
 
             print(f"✅ {len(productos)}. {nombre} | S/{Precio} | {principio}")
