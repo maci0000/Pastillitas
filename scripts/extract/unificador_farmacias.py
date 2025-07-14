@@ -8,7 +8,7 @@ output_path = "data/medicamentos_unificados.csv"
 
 # Cargar los archivos
 df_boticas = pd.read_csv(path_boticas)
-df_hogar = pd.read_csv(path_hogar)
+df_hogar = pd.read_csv(path_hogar, on_bad_lines='skip')
 
 # Renombrar columnas si fueran diferentes
 df_boticas.rename(columns={
@@ -22,10 +22,10 @@ df_hogar.rename(columns={
 }, inplace=True)
 
 # Verificar que ambas tengan la columna 'farmacia'
-if "farmacia" not in df_boticas.columns:
-    df_boticas["farmacia"] = "Boticas y Salud"
-if "farmacia" not in df_hogar.columns:
-    df_hogar["farmacia"] = "Hogar y Salud"
+if "Farmacia" not in df_boticas.columns:
+    df_boticas["Farmacia"] = "Boticas y Salud"
+if "Farmacia" not in df_hogar.columns:
+    df_hogar["Farmacia"] = "Hogar y Salud"
 
 # Unir los DataFrames
 df_final = pd.concat([df_boticas, df_hogar], ignore_index=True)
