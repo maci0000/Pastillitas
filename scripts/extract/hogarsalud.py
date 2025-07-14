@@ -87,11 +87,11 @@ while True:
                 continue
 
         df_temp = pd.DataFrame({
-            "Producto": nombre_comercial,
+            "Productos": nombre_comercial,
             "Precio": precios,
             "PrincipioActivo": principio_activo,
         })
-        df_temp["Farmacia"] = "Hogar y Salud"
+        df_temp["Farmacias"] = "Hogar y Salud"
 
         df_temp.to_csv(output_path, index=False, encoding="utf-8")
         print(f"💾 Guardado parcial: {len(df_temp)} productos")

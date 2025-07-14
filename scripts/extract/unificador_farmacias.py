@@ -12,12 +12,12 @@ df_hogar = pd.read_csv(path_hogar, on_bad_lines='skip')
 
 # Renombrar columnas si fueran diferentes
 df_boticas.rename(columns={
-    "Producto": "Producto",
+    "Producto": "Productos",
     "PrincipioActivo": "PrincipioActivo",
 }, inplace=True)
 
 df_hogar.rename(columns={
-    "Producto": "Producto",
+    "Producto": "Productos",
     "PrincipioActivo": "PrincipioActivo",
 }, inplace=True)
 
